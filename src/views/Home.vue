@@ -1,7 +1,12 @@
 <template>
   <div class="home">
-    <h1>Hi vinod...this is home component</h1>
-    <app-addpost />
+     
+     <div>
+       <h4>Welcome to posts managment   </h4>
+       <app-addpost />
+     </div>
+    
+   
     <app-postlist :postslists="postslist" :errors="errors" />
   </div>
 </template>

@@ -6,12 +6,9 @@
       </div>
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
-        <p class="card-text">{{ post.body }}</p>
-
-        <!-- <a href="#" class="btn btn-primary">show comments</a> -->
-
+        <!-- <a href="#" class="btn btn-primary">show comments</a> -->    
       <router-link tag="button" 
-      :to="'/Home/' + $route.params.id + '/edit'"
+      :to="`/PostDetail/${post.id}`"
        class="btn btn-primary">show post details</router-link> 
 
       </div>
@@ -26,6 +23,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: "PostList",
   props: ["postslists", "errors"],
@@ -33,4 +32,6 @@ export default {
 </script>
 
 <style scoped >
+
+
 </style>

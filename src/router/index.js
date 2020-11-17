@@ -18,9 +18,9 @@ const routes = [
     component: About
   },
   {
-    path: '/postdetail:id',
+    path: '/PostDetail/:id',
     component: PostDetail,
-    name:'post-details'
+    name:'PostDetail'
   }
 ]
 
