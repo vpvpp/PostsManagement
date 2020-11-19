@@ -1,12 +1,8 @@
 <template>
   <div class="home">
-     
-     <div>
-       <h4>Welcome to posts managment   </h4>
-       <app-addpost />
-     </div>
-    
-   
+    <div>
+      <app-addpost @newPost="RecievedNewPost" />
+    </div>
     <app-postlist :postslists="postslist" :errors="errors" />
   </div>
 </template>
@@ -19,7 +15,7 @@ import postlist from "../components/PostList.vue";
 import addpost from "../components/AddPost.vue";
 
 export default {
-  name: "Home", 
+  name: "Home",
   components: {
     "app-postlist": postlist,
     "app-addpost": addpost,
@@ -29,6 +25,25 @@ export default {
       postslist: [],
       errors: [],
     };
+  },
+  methods: {
+    RecievedNewPost(newpostData) {
+      const { title, body } = newpostData;
+
+      axios
+        .post("https://jsonplaceholder.typicode.com/posts", {
+          //  es6 destrucring
+              title : title,
+              body: body
+        })
+        .then( response => {
+          // //spread Operator
+            this.postslist = [...this.postslist, response.data]
+        })
+        .catch( error =>  {
+          console.log(error);
+        });
+    },
   },
   created() {
     axios

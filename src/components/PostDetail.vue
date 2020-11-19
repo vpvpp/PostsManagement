@@ -6,12 +6,13 @@
         <router-link class="btn btn-block btn-info" to="/">Go Back</router-link>
       </div>
     </div>
-    <div class="card mb-3">
+    <div class="card mb-3 bg-light">
       <div class="card-body">
-        <h3>{{post.title}}</h3>
-        <p>{{post.body}}</p>
+        <h3> {{post.title}}</h3>
+        <p class="text-info">{{post.body}}</p>
       </div>
     </div>
+ <app-postcomments/>
     </div>
 </template>
 
@@ -20,9 +21,13 @@
 <script>
 
 import axios from 'axios'
+import postcomments from '../components/PostComments'
 
 export default {
   name:'PostDetail',
+  components:{
+    'app-postcomments' : postcomments
+  },
   data(){
     return{
       id: this.$route.params.id,
@@ -37,7 +42,7 @@ export default {
         this.post = resp.data;
       })
       .catch((e) => {
-        this.errors.push(e);
+        console.log(e.message)
       });
   },
 }
